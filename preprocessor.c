@@ -1,7 +1,13 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!\n");
+
+    /*todo del, examples from dani  */
+    int x = 16961;
+    printf("\n%d", x);
+    putchar('\n');
+    fwrite(&x, sizeof(int), 1, stdout);
+
     return 0;
 }
 /*TODO
@@ -20,4 +26,5 @@ int main() {
  *                  2. if whole line comment
  *                  3. if multi line comment
  *                  4. if comment as part of the text
+ *                  5. deal with printf("\n%d", x);
  * */
