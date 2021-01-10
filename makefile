@@ -1,7 +1,7 @@
 #todo update to fit the project
 CC = gcc # compiler
 CFLAGS = -ansi -Wall -pedantic # gcc flags
-EXE_O_DEPS = preprocessor.o mat.o mat_setup_teardown.o input.o command_util.o # dependencies for executable
+EXE_O_DEPS = preprocessor.o # dependencies for executable
 
 # final executable
 preprocessor: $(EXE_O_DEPS)
