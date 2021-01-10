@@ -6,7 +6,10 @@
 
 #define DEF 1
 #define ABC "Hello"
-#define PRINT_VAR(X) printf(#X " is %d at address %p\n",X,&x);
+
+/*Print the name of the passed variable, its value and address in memory*/
+#define PRINT_VAR(X)\
+    printf(#X " is %d at address %p\n",X,&x);
 
 int main() {
     int x; /*comment*/
