@@ -12,6 +12,11 @@
 
 #define IS_QUOTE ch=='\"'
 
+/*Current character state while reading input file*/
+enum state {
+    IN_COMMENT, OUT, IN_STRING, LEFT_SLASH, RIGHT_STAR
+};
+
 /*Functions*/
 FILE *generate_comment_free_file(char *fileName);
 

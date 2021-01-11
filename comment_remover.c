@@ -1,10 +1,5 @@
 #include "comment_remover.h"
 
-enum state {
-    IN_COMMENT, OUT, IN_STRING, LEFT_SLASH, RIGHT_STAR
-};
-
-
 /*Generate a copy of given file without ANSI comments*/
 FILE *generate_comment_free_file(char *fileName) {
     FILE *in = NULL, *out = NULL;

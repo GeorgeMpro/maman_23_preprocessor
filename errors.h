@@ -4,12 +4,7 @@
 #define ERROR_FILE_CREATE "\nERROR:Could not create file \"%s\"\n"
 #define ERROR_FILE_SUFFIX "\nERROR:Invalid file suffix in %s\n"
 
-
-
-
-
 /*          Error handling*/
 #define RETURN_ON_ERROR(MSG, ARG) \
     printf(MSG,ARG);
-
 
