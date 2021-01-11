@@ -5,13 +5,27 @@ void insert_includes(FILE *in, FILE *out) {
      * cleanup
      * check error
      * free memmory*/
-    char *buffer;
-    buffer = calloc(BUFFER_MAX_SIZE, sizeof(char));
-    printf("\nanan!!\n");
-    fgets(buffer, BUFFER_MAX_SIZE, in);
-    printf("buffr: [%s]", buffer);
-    while (fgets(buffer, BUFFER_MAX_SIZE, in) != NULL) {
-        puts(buffer);
+    char *token;
+    char buffer[500];
+
+    while (fgets(buffer, sizeof(buffer), in) != NULL) {
+        printf("buffr: [%s]", buffer);
+       token=  strtok(buffer,"#");
+        printf("\ntoken: [%s]", token);
+/*todo
+ * # can have space
+ * then include
+ * then "filename"*/
+
+
+
+
+
+
+
+
+
+
     }
 
 

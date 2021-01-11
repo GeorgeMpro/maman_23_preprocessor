@@ -6,7 +6,7 @@ FILE *generate_comment_free_file(char *fileName) {
 
     /*Get pointer to file is possible*/
     in = get_file(fileName, READ_MODE);
-    out = create_out_file(fileName, FILE_NO_COMMENT_SUFFIX, WRITE_PLUS_MODE);
+    out = create_out_file(fileName, FILE_NO_COMMENT_SUFFIX, READ_MODE);
     return write_file_without_comments(in, out);
 }
 
