@@ -50,7 +50,7 @@ int is_valid_suffix(const char *name) {
 /*todo
  * new write will delete it*/
 /*Create new file or overwrite existing.*/
-FILE *createOutFile(char *nameToModify, char suffix, char *modes) {
+FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
     char *fileName = appendSuffix(nameToModify, suffix);
     /*append file name suffix*/
     FILE *tmp = fopen(fileName, modes);

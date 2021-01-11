@@ -3,6 +3,25 @@
 #include "comment_remover.h"
 
 
+void generate_file_with_written_libraries(char *name, FILE *in) {
+    FILE *out;
+    /*todo*/
+    out = create_out_file(name, '2', WRITE_MODE);
+
+
+/*todo
+ * ***not forget to error check everywhere
+ *          open for writing
+ * 1. find #include location
+ *          set start pointer
+ *          set end pointer
+ * 2. extract the file name value
+ *          open the file
+ *          copy file contents
+ *                  copy whole lines*/
+
+}
+
 int main(int argc, char *argv[]) {
     char *fileName;
     FILE *noComment;
@@ -16,18 +35,9 @@ int main(int argc, char *argv[]) {
 /*todo validate not null*/
     noComment = generate_comment_free_file(fileName);
 
-/*todo
- * ***not forget to error check everywhere
- * Create new file
- *          set fileName.c2
- *          open for writing
- * 1. find #include location
- *          set start pointer
- *          set end pointer
- * 2. extract the file name value
- *          open the file
- *          copy file contents
- *                  copy whole lines*/
+    generate_file_with_written_libraries(fileName, noComment);
+
+
 
     /*todo del, examples from dani  *
     int x = 16961;
