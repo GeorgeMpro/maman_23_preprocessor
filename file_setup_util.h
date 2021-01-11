@@ -16,7 +16,7 @@ char *get_file_name(int argc, char **argv);
 
 int is_valid_suffix(const char *name);
 
-FILE *getFile(const char *fileName, char *modes);
+FILE *get_file(const char *fileName, char *modes);
 
 FILE *create_out_file(char *nameToModify, char suffix, char *modes);
 

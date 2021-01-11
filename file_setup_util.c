@@ -12,8 +12,9 @@ char *get_file_name(int argc, char **argv) {
 }
 
 /*Attempt to receive pointer to file*/
-FILE *getFile(const char *fileName, char *modes) {
-    FILE *tmp = fopen(fileName, modes);
+FILE *get_file(const char *fileName, char *modes) {
+    FILE *tmp;
+    tmp= fopen(fileName, modes);
     if (tmp == NULL) {
         RETURN_ON_ERROR(ERROR_FILE_NAME, fileName)
         exit(1);

@@ -5,7 +5,8 @@
 
 
 int main(int argc, char *argv[]) {
-    char *inputFile, *noComment;
+    char *inputFile;
+    FILE *noComment;
 
     /*todo user friendly explanation*/
 
