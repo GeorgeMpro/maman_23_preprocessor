@@ -5,8 +5,11 @@
 #include "errors.h"
 
 /*Declarations*/
+#define READ_MODE "r"
 
-#define FILE_NO_COMMENT '1'
+#define WRITE_PLUS_MODE "w+"
+
+#define FILE_NO_COMMENT_SUFFIX '1'
 
 /*Functions*/
 char *get_file_name(int argc, char **argv);
@@ -17,6 +20,6 @@ FILE *getFile(const char *fileName, char *modes);
 
 FILE *create_out_file(char *nameToModify, char suffix, char *modes);
 
-char *appendSuffix(char *modify, char suffix);
+char *append_suffix(char *modify, char suffix);
 
 void validate_file_name(char *name);

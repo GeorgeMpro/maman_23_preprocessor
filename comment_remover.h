@@ -2,10 +2,6 @@
 #include "file_setup_util.h"
 
 /*Definitions*/
-#define READ_MODE "r"
-
-#define WRITE_MODE "w"
-
 #define IS_SLASH ch == '/'
 
 #define IS_STAR ch == '*'

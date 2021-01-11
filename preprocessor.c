@@ -1,41 +1,23 @@
 /*todo move*/
 #include <stdio.h>
 #include "comment_remover.h"
+#include "header_writer.h"
 
-
-void generate_file_with_written_libraries(char *name, FILE *in) {
-    FILE *out;
-    /*todo*/
-    out = create_out_file(name, '2', WRITE_MODE);
-
-
-/*todo
- * ***not forget to error check everywhere
- *          open for writing
- * 1. find #include location
- *          set start pointer
- *          set end pointer
- * 2. extract the file name value
- *          open the file
- *          copy file contents
- *                  copy whole lines*/
-
-}
 
 int main(int argc, char *argv[]) {
-    char *fileName;
-    FILE *noComment;
+    char *inputFile, *noComment;
 
     /*todo user friendly explanation*/
 
-    fileName = get_file_name(argc, argv);
+    inputFile = get_file_name(argc, argv);
     /*Validate if valid .c file name*/
-    validate_file_name(fileName);
+    validate_file_name(inputFile);
 
 /*todo validate not null*/
-    noComment = generate_comment_free_file(fileName);
+/*todo free the in file, maybe in the other file*/
+    noComment = generate_comment_free_file(inputFile);
 
-    generate_file_with_written_libraries(fileName, noComment);
+    generate_file_with_written_libraries(noComment, inputFile);
 
 
 

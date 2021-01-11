@@ -3,4 +3,4 @@ project(maman_23_preprocessor C)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(maman_23_preprocessor preprocessor.c another.h header1.h header2.h header3.h errors.h file_setup_util.c file_setup_util.h comment_remover.c comment_remover.h)
+add_executable(maman_23_preprocessor preprocessor.c file_setup_util.c file_setup_util.h comment_remover.c comment_remover.h header_writer.c header_writer.h errors.h)

@@ -51,7 +51,7 @@ int is_valid_suffix(const char *name) {
  * new write will delete it*/
 /*Create new file or overwrite existing.*/
 FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
-    char *fileName = appendSuffix(nameToModify, suffix);
+    char *fileName = append_suffix(nameToModify, suffix);
     /*append file name suffix*/
     FILE *tmp = fopen(fileName, modes);
     if (tmp == NULL) {
@@ -62,7 +62,7 @@ FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
 }
 
 /*todo*/
-char *appendSuffix(char *modify, char suffix) {
+char *append_suffix(char *modify, char suffix) {
     char *tmp;
     size_t length = strlen(modify);
     /*todo error handling*/
