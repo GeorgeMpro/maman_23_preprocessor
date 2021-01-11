@@ -4,5 +4,7 @@
 /*Definitions*/
 #define MAX_BUFFER 500
 
+#define READ_MODE "r"
+
 /*Functions*/
-int remove_comments(char *fileName);
+FILE * generate_comment_free_file(char *fileName);

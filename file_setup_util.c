@@ -37,11 +37,13 @@ int is_valid_suffix(const char *name) {
 }
 
 
-/*todo*/
+/*todo
+ * new write will delete it*/
+/*Create new file or overwrite existing.*/
 FILE *createOutFile(char *nameToModify, char suffix, char *modes) {
     char *fileName = appendSuffix(nameToModify, suffix);
     /*append file name suffix*/
-    FILE *tmp = fopen(NULL, modes);
+    FILE *tmp = fopen(fileName, modes);
     if (tmp == NULL) {
         RETURN_ON_ERROR(ERROR_FILE_CREATE, fileName)
     }

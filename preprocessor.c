@@ -1,6 +1,7 @@
 /*todo move*/
 #include <stdio.h>
 #include "comment_remover.h"
+
 /*todo extract*/
 
 
@@ -12,6 +13,9 @@ int main(int argc, char *argv[]) {
 /*todo del*/
     int i;
     char *fileName;
+    FILE *noComment;
+
+
     for (i = 0l; i < argc; i++) {
         printf("argv[%d] = %s\n", i, argv[i]);
     }
@@ -24,9 +28,8 @@ int main(int argc, char *argv[]) {
 
     validate_file_name(fileName);
 
-
-    remove_comments(fileName);
-/*todo write non commented filename.c1 */
+/*todo validate not null*/
+    noComment = generate_comment_free_file(fileName);
 
 /*todo write file with input #include fields filename.c2*/
 
