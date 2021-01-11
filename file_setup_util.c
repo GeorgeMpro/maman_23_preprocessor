@@ -1,6 +1,16 @@
 #include "file_setup_util.h"
 
 /*todo*/
+
+/*Extract file name from user input*/
+char *get_file_name(int argc, char **argv) {
+    /*Validate number of given number of arguments*/
+    if (argc != 2) {
+        RETURN_ON_ERROR(ERROR_WRONG_ARG_NUMBER, argc)
+    }
+    return argv[1];
+}
+
 /*Attempt to receive pointer to file*/
 FILE *getFile(const char *fileName, char *modes) {
     FILE *tmp = fopen(fileName, modes);

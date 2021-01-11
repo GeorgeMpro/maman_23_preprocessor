@@ -2,25 +2,32 @@
 #include <stdio.h>
 #include "comment_remover.h"
 
-char *get_file_name(int argc, char **argv) {
-    /*Validate number of given number of arguments*/
-    if (argc != 2) {
-        RETURN_ON_ERROR(ERROR_WRONG_ARG_NUMBER, argc)
-    }
-    return argv[1];
-}
 
 int main(int argc, char *argv[]) {
     char *fileName;
     FILE *noComment;
-    fileName = get_file_name(argc, argv);
 
+    /*todo user friendly explanation*/
+
+    fileName = get_file_name(argc, argv);
+    /*Validate if valid .c file name*/
     validate_file_name(fileName);
 
 /*todo validate not null*/
     noComment = generate_comment_free_file(fileName);
 
-/*todo write file with input #include fields filename.c2*/
+/*todo
+ * ***not forget to error check everywhere
+ * Create new file
+ *          set fileName.c2
+ *          open for writing
+ * 1. find #include location
+ *          set start pointer
+ *          set end pointer
+ * 2. extract the file name value
+ *          open the file
+ *          copy file contents
+ *                  copy whole lines*/
 
     /*todo del, examples from dani  *
     int x = 16961;
