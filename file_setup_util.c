@@ -5,7 +5,7 @@
 FILE *getFile(const char *fileName, char *modes) {
     FILE *tmp = fopen(fileName, modes);
     if (tmp == NULL) {
-        RETURN_ON_ERROR(ERROR_FILE_NAME, fileName);
+        RETURN_ON_ERROR(ERROR_FILE_NAME, fileName)
         exit(1);
     }
     return tmp;
@@ -14,7 +14,7 @@ FILE *getFile(const char *fileName, char *modes) {
 /*Valid name or error*/
 void validate_file_name(char *name) {
     if (!is_valid_suffix(name)) {
-        RETURN_ON_ERROR(ERROR_FILE_SUFFIX, name);
+        RETURN_ON_ERROR(ERROR_FILE_SUFFIX, name)
         exit(1);
     }
 }
@@ -22,7 +22,7 @@ void validate_file_name(char *name) {
 /*Validates proper file suffix in C*/
 int is_valid_suffix(const char *name) {
     char *suffix;
-    unsigned long length;
+    size_t length;
     /*Get last appearance of 'c' and the character before in file name*/
     suffix = strrchr(name, 'c');
     suffix--;
@@ -40,21 +40,19 @@ int is_valid_suffix(const char *name) {
 /*todo*/
 FILE *createOutFile(char *nameToModify, char suffix, char *modes) {
     char *fileName = appendSuffix(nameToModify, suffix);
-    /*append name suffix*/
-    printf("\n****************************************ull?");
+    /*append file name suffix*/
     FILE *tmp = fopen(NULL, modes);
     if (tmp == NULL) {
         RETURN_ON_ERROR(ERROR_FILE_CREATE, fileName)
     }
 
-
-    return NULL;
+    return tmp;
 }
 
 /*todo*/
 char *appendSuffix(char *modify, char suffix) {
     char *tmp;
-    unsigned long length = strlen(modify);
+    size_t length = strlen(modify);
     /*todo error handling*/
     /*adding character and trailing zero*/
     tmp = calloc(length + 1 + 1, sizeof(char));
