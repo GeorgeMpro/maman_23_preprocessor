@@ -6,7 +6,7 @@ FILE *generate_comment_free_file(char *fileName) {
 
     /*Get pointer to file is possible*/
     in = get_file(fileName, READ_MODE);
-    out = create_out_file(fileName, FILE_NO_COMMENT_SUFFIX, "w+");
+    out = create_out_file(fileName, FILE_NO_COMMENT_SUFFIX, WRITE_PLUS_MODE);
     return write_file_without_comments(in, out);
 }
 
@@ -14,7 +14,8 @@ FILE *generate_comment_free_file(char *fileName) {
 FILE *write_file_without_comments(FILE *in, FILE *out) {
     int ch, state;
     state = OUT;
-    /*Reading and writing to file*/
+
+    /*Choose how to copy to out file*/
     while ((ch = fgetc(in)) != EOF) {
         switch (state) {
             case OUT:
