@@ -1,44 +1,41 @@
 #include "header_writer.h"
 
-void check_if_library(char *buffer, FILE *out) {
+void write_header_contents_to_file(char *name, FILE *out) {
+    char buffer[BUFFER_MAX_SIZE];
+    FILE *tmp;
+    tmp = get_file(name, READ_MODE);
+    while (!feof(tmp)) {
+        fgets(buffer, sizeof(buffer), tmp);
+        fputs(buffer, out);
+    }
+
+
+    fclose(tmp);
+}
+
+/*Extract file name from header declaration*/
+char *extract_file_name(char *buffer) {
     char *token;
-/*todo*/
-    if (strstr(buffer, "#") && strstr(buffer, "include") && strstr(buffer, "printf(") == NULL) {
-
-        printf("\nprobably include");
-
-        /*todo first token*/
-        printf("\nHEAD buffer %s", buffer);
-        token = strtok(buffer, " ,\t\n");
-        while (token != NULL) {
-            printf("\nTOKEN:[%s]", token);
-
-            token = strtok(NULL, "\"\n");
+    token = strtok(buffer, " ,\t\n");
+    while (token != NULL) {
+        if (strstr(token, ".h")) {
+            return token;
         }
+        token = strtok(NULL, "\"\n");
+    }
+    return token;
+}
+
+void check_if_library(char *buffer, FILE *out) {
+    char *headerName;
+/*todo*/
+    /*Most likely a library*/
+    if (strstr(buffer, "#") && strstr(buffer, "include") && strstr(buffer, "printf(") == NULL) {
+        headerName = extract_file_name(buffer);
+        write_header_contents_to_file(headerName, out);
     } else {
         fputs(buffer, out);
     }
-/*    printf("\nnew line: %ld", newLineStart);*/
-/*
-    newLineStart = ftell(in);
-*//*todo sets to start of current line
- * maybe use fseek instead?*//*
-    fsetpos(in, fpos);
-    printf("\n***buffer: [%s]", buffer);
-    printf("\n***Start char stream\n");
-
-    do {
-        *//*todo get # location*//*
-        ch = fgetc(in);
-        if (ch == '#') {
-            fgetpos(in, poundPos);
-
-        }
-        putchar(ch);
-    } while (ch != '\n');
-
-
-    fgetpos(in, fpos);*/
 }
 
 /*Write header content to the output file*/
