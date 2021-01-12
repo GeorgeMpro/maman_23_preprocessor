@@ -27,12 +27,12 @@ void insert_includes(FILE *in, FILE *out) {
 /*Decide how to copy input line to output*/
 void process_input_file_line(FILE *out, char *buffer) {
     /*Check for header in stream or copy the line wholly*/
-    (strstr(buffer, "include") != NULL) ? check_if_library(buffer, out) :
-    fputs(buffer, out);
+    (strstr(buffer, "include") != NULL) ?
+    check_if_library(buffer, out) : fputs(buffer, out);
 }
 
 /*Validate need to extract header file information*/
-void check_if_library(char *buffer, FILE *out) {
+int check_if_library(char *buffer, FILE *out) {
     char *headerName;
 
     /*Check if string is an an include*/
@@ -45,6 +45,7 @@ void check_if_library(char *buffer, FILE *out) {
     } else {
         fputs(buffer, out);
     }
+    return 0;
 }
 
 /*Extract file name from header declaration*/

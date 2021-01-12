@@ -1,4 +1,3 @@
-#todo update to fit the project
 CC = gcc # compiler
 CFLAGS = -ansi -Wall -pedantic # gcc flags
 EXE_O_DEPS = preprocessor.o comment_remover.o file_setup_util.o header_writer.o# dependencies for executable

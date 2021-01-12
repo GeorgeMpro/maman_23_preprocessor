@@ -48,10 +48,11 @@ int is_valid_suffix(char *name) {
 /*Create new file or overwrite existing.*/
 FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
     char *fileName;
-    fileName = append_suffix(nameToModify, suffix);
+    FILE *tmp;
 
     /*append file name suffix*/
-    FILE *tmp = fopen(fileName, modes);
+    fileName = append_suffix(nameToModify, suffix);
+    tmp = fopen(fileName, modes);
     if (tmp == NULL) {
         RETURN_ON_ERROR(ERROR_FILE_CREATE, fileName)
     }

@@ -17,7 +17,7 @@ void process_input_file_line(FILE *out, char *buffer);
 
 void insert_includes(FILE *, FILE *);
 
-void check_if_library(char *, FILE *);
+int check_if_library(char *buffer, FILE *out);
 
 char *extract_file_name(char *);
 
