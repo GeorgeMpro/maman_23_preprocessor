@@ -8,7 +8,10 @@ void insert_includes(FILE *in, FILE *out) {
     char *token;
     char buffer[500];
 
-    while (fgets(buffer, sizeof(buffer), in) != NULL) {
+    /*todo
+     * make sure no weird chars or EOF*/
+    while (!feof(in)) {
+        fgets(buffer, sizeof(buffer), in);
         printf("buffr: [%s]", buffer);
        token=  strtok(buffer,"#");
         printf("\ntoken: [%s]", token);

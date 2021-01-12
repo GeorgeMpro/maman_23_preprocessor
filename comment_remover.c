@@ -33,6 +33,9 @@ FILE *write_file_without_comments(FILE *in, FILE *out) {
                 break;
         }
     }
+    /*Close original file*/
+    fclose(in);
+
     return out;
 }
 
