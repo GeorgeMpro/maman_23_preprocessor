@@ -1,18 +1,16 @@
 #include "file_setup_util.h"
 
-/*todo*/
-
 /*Extract file name from user input*/
 char *get_file_name(int argc, char **argv) {
     /*Validate number of given number of arguments*/
-    if (argc != 2) {
+    if (argc != NUMBER_OF_ALLOWED_ARGUMENTS) {
         RETURN_ON_ERROR(ERROR_WRONG_ARG_NUMBER, argc)
     }
     return argv[1];
 }
 
 /*Attempt to receive pointer to file*/
-FILE *get_file(const char *fileName, char *modes) {
+FILE *get_file(char *fileName, char *modes) {
     FILE *tmp;
     tmp = fopen(fileName, modes);
     if (tmp == NULL) {
@@ -31,7 +29,7 @@ void validate_file_name(char *name) {
 }
 
 /*Validates proper file suffix in C*/
-int is_valid_suffix(const char *name) {
+int is_valid_suffix(char *name) {
     char *suffix;
     size_t length;
     /*Get last appearance of 'c' and the character before in file name*/
@@ -47,12 +45,11 @@ int is_valid_suffix(const char *name) {
            && name[--length] == '.';
 }
 
-
-/*todo
- * new write will delete it*/
 /*Create new file or overwrite existing.*/
 FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
-    char *fileName = append_suffix(nameToModify, suffix);
+    char *fileName;
+    fileName = append_suffix(nameToModify, suffix);
+
     /*append file name suffix*/
     FILE *tmp = fopen(fileName, modes);
     if (tmp == NULL) {
@@ -62,13 +59,19 @@ FILE *create_out_file(char *nameToModify, char suffix, char *modes) {
     return tmp;
 }
 
-/*todo*/
+/*Append character to given string*/
 char *append_suffix(char *modify, char suffix) {
     char *tmp;
-    size_t length = strlen(modify);
-    /*todo error handling*/
+    size_t length;
+    length = strlen(modify);
+
     /*adding character and trailing zero*/
     tmp = calloc(length + 1 + 1, sizeof(char));
+    if (tmp == NULL) {
+        perror("\nERROR:Could not allocate memory for file name appending suffix");
+        exit(1);
+    }
+
     strcpy(tmp, modify);
     tmp[length] = suffix;
     tmp[length + 1] = '\0';

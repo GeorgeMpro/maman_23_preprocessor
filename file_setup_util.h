@@ -11,15 +11,17 @@
 
 #define FILE_NO_COMMENT_SUFFIX '1'
 
+#define NUMBER_OF_ALLOWED_ARGUMENTS 2
+
 /*Functions*/
-char *get_file_name(int argc, char **argv);
+char *get_file_name(int, char **);
 
-int is_valid_suffix(const char *name);
+int is_valid_suffix(char *);
 
-FILE *get_file(const char *fileName, char *modes);
+FILE *get_file(char *, char *);
 
-FILE *create_out_file(char *nameToModify, char suffix, char *modes);
+FILE *create_out_file(char *, char, char *);
 
-char *append_suffix(char *modify, char suffix);
+char *append_suffix(char *, char);
 
-void validate_file_name(char *name);
+void validate_file_name(char *);
