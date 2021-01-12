@@ -20,15 +20,6 @@ int main(int argc, char *argv[]) {
 
     generate_file_with_written_libraries(noComment, inputFile);
 
-
-
-    /*todo del, examples from dani  *
-    int x = 16961;
-    printf("\n%d", x);
-    putchar('\n');
-    fwrite(&x, sizeof(int), 1, stdout);
-*/
-
     /*Program complete successfully*/
     /*todo clear memory*/
     return 0;

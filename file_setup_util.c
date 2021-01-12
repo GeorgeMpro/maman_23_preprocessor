@@ -14,7 +14,7 @@ char *get_file_name(int argc, char **argv) {
 /*Attempt to receive pointer to file*/
 FILE *get_file(const char *fileName, char *modes) {
     FILE *tmp;
-    tmp= fopen(fileName, modes);
+    tmp = fopen(fileName, modes);
     if (tmp == NULL) {
         RETURN_ON_ERROR(ERROR_FILE_NAME, fileName)
         exit(1);
@@ -74,5 +74,4 @@ char *append_suffix(char *modify, char suffix) {
     tmp[length + 1] = '\0';
 
     return tmp;
-
 }
