@@ -45,6 +45,8 @@ int check_if_library(char *buffer, FILE *out) {
     } else {
         fputs(buffer, out);
     }
+
+    /*Returns value to avoid ternary operator error*/
     return 0;
 }
 
