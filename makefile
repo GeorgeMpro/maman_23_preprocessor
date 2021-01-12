@@ -18,9 +18,5 @@ file_setup_util.o:file_setup_util.c
 header_writer.o: header_writer.c
 	$(CC) -c header_writer.c $(CFLAGS) -o $@
 
-#todo reading
-
-#todo writing
-
 clean:
 	rm *.o
