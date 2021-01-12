@@ -1,4 +1,3 @@
-/*todo clean*/
 /*Libraries*/
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +8,17 @@
 
 #define BUFFER_MAX_SIZE 500
 
-/*Functions*/
-void insert_includes(FILE *in, FILE *out);
+#define WRITE_MODE "w"
 
-void generate_file_with_written_libraries(FILE *in, char *name);
+/*Functions*/
+void generate_file_with_written_libraries(FILE *, char *);
+
+void process_input_file_line(FILE *out, char *buffer);
+
+void insert_includes(FILE *, FILE *);
+
+void check_if_library(char *, FILE *);
+
+char *extract_file_name(char *);
+
+void write_header_contents_to_file(char *, FILE *);

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "header1.h"/*Comment*/
 #include          /*Comment*/       "header2.h"
 
