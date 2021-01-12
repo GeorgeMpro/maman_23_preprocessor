@@ -1,17 +1,24 @@
 #include "header_writer.h"
 
-void header_name_extractor(FILE *in, char *buffer, fpos_t *fpos, fpos_t *poundPos, int ch, long newLineStart) {
+void check_if_library(char *buffer, FILE *out) {
     char *token;
-    /*todo first token*/
-    printf("\nHEAD buffer %s", buffer);
-    token = strtok(buffer, " ,\t\n");
+/*todo*/
+    if (strstr(buffer, "#") && strstr(buffer, "include") && strstr(buffer, "printf(") == NULL) {
 
-    printf("\nTOKEN:[%s]", token);
+        printf("\nprobably include");
 
+        /*todo first token*/
+        printf("\nHEAD buffer %s", buffer);
+        token = strtok(buffer, " ,\t\n");
+        while (token != NULL) {
+            printf("\nTOKEN:[%s]", token);
 
-    token = strtok(NULL, " ,\t\n");
-    printf("\nTOKEN:[%s]", token);
-    printf("\nnew line: %ld", newLineStart);
+            token = strtok(NULL, "\"\n");
+        }
+    } else {
+        fputs(buffer, out);
+    }
+/*    printf("\nnew line: %ld", newLineStart);*/
 /*
     newLineStart = ftell(in);
 *//*todo sets to start of current line
@@ -37,48 +44,33 @@ void header_name_extractor(FILE *in, char *buffer, fpos_t *fpos, fpos_t *poundPo
 /*Write header content to the output file*/
 void insert_includes(FILE *in, FILE *out) {
     /*todo*/
-    char *token;
     char buffer[BUFFER_MAX_SIZE];
-    fpos_t fpos, poundPos;
-    int ch;
+    fpos_t fpos;
     /*Rewind passed file to the beginning*/
     rewind(in);
-
-    long newLineStart;
-
-
-    /*todo
-     * make sure no weird chars or EOF*/
-/*todo points to start*/
-/*todo reset stream
- * */
+    /*todo del?*/
     fgetpos(in, &fpos);
     while (!feof(in)) {
         fgets(buffer, sizeof(buffer), in);
         /*todo
-         * points to beginning of the line*/
-        /*todo do not copy char by char
-         * else copy char by char*/
-        printf("\nbuffer:[%s]", buffer);
+         * check if include of something else
+         * */
         if (strstr(buffer, "include") != NULL) {
-            header_name_extractor(in, buffer, &fpos, &poundPos, ch, newLineStart);
+            check_if_library(buffer, out);
 
             /*Copy the buffer into .c2 out file*/
         } else {
             fputs(buffer, out);
         }
-
-
     }
 
-
+    /*todo free/close*/
 }
 
+/*Create file for library content insertions*/
 void generate_file_with_written_libraries(FILE *in, char *name) {
     FILE *out;
     /*todo*/
     out = create_out_file(name, INSERTED_CONTENT_SUFFIX, "w");
     insert_includes(in, out);
-
-
 }
